@@ -12,19 +12,19 @@
   <meta name="description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Keras学习（一）：Mac OS下安装基于TensorFlow的Keras">
-<meta property="og:url" content="https://lullabychen.github.io/2019/01/23/Keras1/index.html">
+<meta property="og:url" content="https://lullabychen.github.io/2019/01/24/Keras1/index.html">
 <meta property="og:site_name" content="Cabin">
 <meta property="og:description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/23/photos/Keras1/install-python-3-6.jpg">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/23/photos/Keras1/install-python-3-6-2.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/23/photos/Keras1/install-keras.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/23/photos/Keras1/keras-test.png">
-<meta property="og:updated_time" content="2019-01-24T01:16:01.362Z">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/24/Keras1/Keras2/install-python-3-6.jpg">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/24/Keras1/Keras2/install-python-3-6-2.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/24/Keras1/Keras2/install-keras.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/24/Keras1/Keras2/keras-test.png">
+<meta property="og:updated_time" content="2019-01-24T01:24:29.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keras学习（一）：Mac OS下安装基于TensorFlow的Keras">
 <meta name="twitter:description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
-<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/23/photos/Keras1/install-python-3-6.jpg">
+<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/24/Keras1/Keras2/install-python-3-6.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
   
@@ -122,8 +122,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/23/Keras1/" class="article-date">
-	  <time datetime="2019-01-23T13:55:23.000Z" itemprop="datePublished">January 23, 2019</time>
+	<a href="/2019/01/24/Keras1/" class="article-date">
+	  <time datetime="2019-01-24T01:20:32.000Z" itemprop="datePublished">January 24, 2019</time>
 	</a>
 
        
@@ -143,16 +143,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not find a version that satisfies the requirement tensorflow ......</span><br></pre></td></tr></table></figure>
 <p>原因是<strong>python版本问题</strong>：最新的anaconda中python版本已经更新到python3.7，而tensorflow只支持到python3.6。</p>
 <p>在anaconda官网中给出了三种解决方案： </p>
-<p><img src="/2019/01/23/Keras1/../photos/Keras1/install-python-3-6.jpg" alt=""></p>
+<p><img src="/2019/01/24/Keras1/Keras2/install-python-3-6.jpg" alt=""></p>
 <p>选择第二种方案，在命令行输入如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo conda install python=3.6</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/Keras1/../photos/Keras1/install-python-3-6-2.png" alt=""></p>
+<p><img src="/2019/01/24/Keras1/Keras2/install-python-3-6-2.png" alt=""></p>
 <p>python3.6安装完成。再如上输入命令，tensorflow安装完成。</p>
 <h2 id="2-Keras安装"><a href="#2-Keras安装" class="headerlink" title="2. Keras安装"></a>2. Keras安装</h2><p>采用pip方式安装Keras，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install keras</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/23/Keras1/../photos/Keras1/install-keras.png" alt=""></p>
+<p><img src="/2019/01/24/Keras1/Keras2/install-keras.png" alt=""></p>
 <p>Keras安装完成。</p>
-<h2 id="3-实例测试"><a href="#3-实例测试" class="headerlink" title="3. 实例测试"></a>3. 实例测试</h2><p><img src="/2019/01/23/Keras1/../photos/Keras1/keras-test.png" alt=""></p>
+<h2 id="3-实例测试"><a href="#3-实例测试" class="headerlink" title="3. 实例测试"></a>3. 实例测试</h2><p><img src="/2019/01/24/Keras1/Keras2/keras-test.png" alt=""></p>
 
       
     </div>
