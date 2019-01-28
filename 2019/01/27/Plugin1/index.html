@@ -11,38 +11,20 @@
   
   
   
-  <meta name="description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+  <meta name="description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
 <meta name="keywords" content="Intellij Plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Intellij IDEA插件开发入门（一）">
 <meta property="og:url" content="https://lullabychen.github.io/2019/01/27/Plugin1/index.html">
 <meta property="og:site_name" content="Cabin">
-<meta property="og:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta property="og:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/1.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/2.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/3.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/4.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/5.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/16.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/17.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/7.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/8.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/9.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/10.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/11.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/12.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/18.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/19.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/13.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/20.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/14.png">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/15.png">
-<meta property="og:updated_time" content="2019-01-28T08:50:47.679Z">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
+<meta property="og:updated_time" content="2019-01-28T09:28:47.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intellij IDEA插件开发入门（一）">
-<meta name="twitter:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
-<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/1.png">
+<meta name="twitter:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
   
     <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
   
@@ -127,6 +109,16 @@
           <section id="main" style="float:none;"><article id="post-Plugin1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/0.png" rel="gallery_cjrg4sez30002g6gc9vxcrpf3">
+        <img src="/2019/01/27/Plugin1//0.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
     
       <header class="article-header">
         
@@ -162,8 +154,7 @@
 <li>Plugin Devkit</li>
 </ul>
 <p>本文根据官方推荐使用Gradle。</p>
-<p>##1. 插件开发环境</p>
-<ul>
+<h2 id="1-插件开发环境"><a href="#1-插件开发环境" class="headerlink" title="1. 插件开发环境"></a>1. 插件开发环境</h2><ul>
 <li>IDEA: 社区版本</li>
 <li>Project JDK: 1.8</li>
 <li>Gradle: 4.10</li>
@@ -171,17 +162,16 @@
 <a id="more"></a>
 <h2 id="2-确认Gradle可用"><a href="#2-确认Gradle可用" class="headerlink" title="2. 确认Gradle可用"></a>2. 确认Gradle可用</h2><p>菜单Preferences -&gt; Plugins</p>
 <p><img src="/2019/01/27/Plugin1/1.png" alt="1"></p>
-<p>##3. 创建Plugin项目</p>
-<p><img src="/2019/01/27/Plugin1/2.png" alt="2"></p>
+<h2 id="3-创建Plugin项目"><a href="#3-创建Plugin项目" class="headerlink" title="3. 创建Plugin项目"></a>3. 创建Plugin项目</h2><p><img src="/2019/01/27/Plugin1/2.png" alt="2"></p>
 <p><img src="/2019/01/27/Plugin1/3.png" alt="3"></p>
 <p><img src="/2019/01/27/Plugin1/4.png" alt="4"></p>
 <p>（官方推荐勾选“Use default cradle wrapper”，以便IDEA自动安装Gradle需要的包）</p>
 <p><img src="/2019/01/27/Plugin1/5.png" alt="5"></p>
 <p>项目创建完成。</p>
-<p>工程结构：</p>
+<p><strong>工程结构：</strong></p>
 <p><img src="/2019/01/27/Plugin1/16.png" alt=""></p>
 <p><img src="/2019/01/27/Plugin1/17.png" alt="6"></p>
-<p>plugin.xml文件内容：</p>
+<p><strong>plugin.xml文件内容：</strong></p>
 <ul>
 <li>id：当前插件的唯一id号。</li>
 <li>name：插件的名称。</li>
@@ -192,11 +182,9 @@
 <li>extensions：一般放一些我们自己扩展的东西，比如新增高亮显示、新增语言支持。</li>
 <li>actions：新增的类在这里注册，用于菜单栏扩展。</li>
 </ul>
-<p>##4. 配置Gradle插件</p>
-<p>在build.gradle文件中，设置运行插件的沙箱地址。</p>
+<h2 id="4-配置Gradle插件"><a href="#4-配置Gradle插件" class="headerlink" title="4. 配置Gradle插件"></a>4. 配置Gradle插件</h2><p>在build.gradle文件中，设置运行插件的沙箱地址。</p>
 <p><img src="/2019/01/27/Plugin1/7.png" alt="7"></p>
-<p>##5. 创建一个action</p>
-<p><img src="/2019/01/27/Plugin1/8.png" alt="8"></p>
+<h2 id="5-创建一个action"><a href="#5-创建一个action" class="headerlink" title="5. 创建一个action"></a>5. 创建一个action</h2><p><img src="/2019/01/27/Plugin1/8.png" alt="8"></p>
 <p><img src="/2019/01/27/Plugin1/9.png" alt="9"></p>
 <p>自定义功能加在Window菜单栏下。</p>
 <p><img src="/2019/01/27/Plugin1/10.png" alt="10"></p>
@@ -276,7 +264,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-确认Gradle可用"><span class="nav-number">1.</span> <span class="nav-text">2. 确认Gradle可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Gradle运行配置"><span class="nav-number">2.</span> <span class="nav-text">6. Gradle运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-运行项目"><span class="nav-number">3.</span> <span class="nav-text">7. 运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打包插件"><span class="nav-number">4.</span> <span class="nav-text">8. 打包插件</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-插件开发环境"><span class="nav-number">1.</span> <span class="nav-text">1. 插件开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-确认Gradle可用"><span class="nav-number">2.</span> <span class="nav-text">2. 确认Gradle可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建Plugin项目"><span class="nav-number">3.</span> <span class="nav-text">3. 创建Plugin项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置Gradle插件"><span class="nav-number">4.</span> <span class="nav-text">4. 配置Gradle插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建一个action"><span class="nav-number">5.</span> <span class="nav-text">5. 创建一个action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Gradle运行配置"><span class="nav-number">6.</span> <span class="nav-text">6. Gradle运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-运行项目"><span class="nav-number">7.</span> <span class="nav-text">7. 运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打包插件"><span class="nav-number">8.</span> <span class="nav-text">8. 打包插件</span></a></li></ol>
     
     </div>
   </aside>
