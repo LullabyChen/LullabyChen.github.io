@@ -3,29 +3,46 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Keras学习（一）：Mac OS下安装基于TensorFlow的Keras | Cabin</title>
+  <title>Intellij IDEA插件开发入门（一） | Cabin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Keras">
+  <meta name="keywords" content="Intellij Plugin">
   
   
   
   
-  <meta name="description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
-<meta name="keywords" content="Keras">
+  <meta name="description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta name="keywords" content="Intellij Plugin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Keras学习（一）：Mac OS下安装基于TensorFlow的Keras">
-<meta property="og:url" content="https://lullabychen.github.io/2019/01/24/Keras1/index.html">
+<meta property="og:title" content="Intellij IDEA插件开发入门（一）">
+<meta property="og:url" content="https://lullabychen.github.io/2019/01/27/Plugin1/index.html">
 <meta property="og:site_name" content="Cabin">
-<meta property="og:description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
+<meta property="og:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/24/Keras1/1.png">
-<meta property="og:image" content="https://images.33dot3.xyz/hello_world.jpg">
-<meta property="og:updated_time" content="2019-01-25T04:23:35.878Z">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/1.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/2.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/3.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/4.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/5.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/16.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/17.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/7.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/8.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/9.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/10.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/11.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/12.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/18.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/19.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/13.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/20.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/14.png">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/15.png">
+<meta property="og:updated_time" content="2019-01-28T08:50:47.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Keras学习（一）：Mac OS下安装基于TensorFlow的Keras">
-<meta name="twitter:description" content="操作系统：macOs High Sierra 10.13.6 1. TensorFlow安装必备：Python 采用pip方式安装TensorFlow，命令如下： 1sudo pip install tensorflow 在输入该命令过程中遇到问题如下：（如无遇到可跳过） 1Could not find a version that satisfies the requirement tensor">
-<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/24/Keras1/1.png">
+<meta name="twitter:title" content="Intellij IDEA插件开发入门（一）">
+<meta name="twitter:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 ##1. 插件开发环境  IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
   
@@ -107,29 +124,15 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Keras1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Plugin1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-<div class="article-gallery">
-  <div class="article-gallery-photos">
-    
-      <a class="article-gallery-img fancybox" href="/1.png" rel="gallery_cjrg3flpg0000a0gcju3tu3f6">
-        <img src="/2019/01/24/Keras1//1.png" itemprop="image">
-      </a>
-    
-      <a class="article-gallery-img fancybox" href="https://images.33dot3.xyz/hello_world.jpg" rel="gallery_cjrg3flpg0000a0gcju3tu3f6">
-        <img src="/2019/01/24/Keras1/https://images.33dot3.xyz/hello_world.jpg" itemprop="image">
-      </a>
-    
-  </div>
-</div>
-
     
       <header class="article-header">
         
   
     <h1 class="thumb" itemprop="name">
-      Keras学习（一）：Mac OS下安装基于TensorFlow的Keras
+      Intellij IDEA插件开发入门（一）
     </h1>
   
 
@@ -137,8 +140,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/24/Keras1/" class="article-date">
-	  <time datetime="2019-01-24T01:20:32.000Z" itemprop="datePublished">January 24, 2019</time>
+	<a href="/2019/01/27/Plugin1/" class="article-date">
+	  <time datetime="2019-01-27T13:13:10.000Z" itemprop="datePublished">January 27, 2019</time>
 	</a>
 
       
@@ -153,25 +156,64 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>操作系统：macOs High Sierra 10.13.6</p>
-<h2 id="1-TensorFlow安装"><a href="#1-TensorFlow安装" class="headerlink" title="1. TensorFlow安装"></a>1. TensorFlow安装</h2><p><strong>必备：Python</strong></p>
-<p>采用pip方式安装TensorFlow，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install tensorflow</span><br></pre></td></tr></table></figure>
-<p>在输入该命令过程中遇到问题如下：（如无遇到可跳过）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not find a version that satisfies the requirement tensorflow ......</span><br></pre></td></tr></table></figure>
-<p>原因是<strong>python版本问题</strong>：最新的anaconda中python版本已经更新到python3.7，而tensorflow只支持到python3.6。</p>
+        <p>Intellij IDEA插件开发有两种方式：</p>
+<ul>
+<li>Gradle</li>
+<li>Plugin Devkit</li>
+</ul>
+<p>本文根据官方推荐使用Gradle。</p>
+<p>##1. 插件开发环境</p>
+<ul>
+<li>IDEA: 社区版本</li>
+<li>Project JDK: 1.8</li>
+<li>Gradle: 4.10</li>
+</ul>
 <a id="more"></a>
-<p>在anaconda官网中给出了三种解决方案： </p>
-<p><img src="/2019/01/24/Keras1/install-python-3-6.jpg" alt=""></p>
-<p>选择第二种方案，在命令行输入如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo conda install python=3.6</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/24/Keras1/install-python-3-6-2.png" alt=""></p>
-<p>python3.6安装完成。再如上输入命令，tensorflow安装完成。</p>
-<h2 id="2-Keras安装"><a href="#2-Keras安装" class="headerlink" title="2. Keras安装"></a>2. Keras安装</h2><p>采用pip方式安装Keras，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install keras</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/24/Keras1/install-keras.png" alt=""></p>
-<p>Keras安装完成。</p>
-<h2 id="3-实例测试"><a href="#3-实例测试" class="headerlink" title="3. 实例测试"></a>3. 实例测试</h2><p><img src="/2019/01/24/Keras1/keras-test.png" alt=""></p>
+<h2 id="2-确认Gradle可用"><a href="#2-确认Gradle可用" class="headerlink" title="2. 确认Gradle可用"></a>2. 确认Gradle可用</h2><p>菜单Preferences -&gt; Plugins</p>
+<p><img src="/2019/01/27/Plugin1/1.png" alt="1"></p>
+<p>##3. 创建Plugin项目</p>
+<p><img src="/2019/01/27/Plugin1/2.png" alt="2"></p>
+<p><img src="/2019/01/27/Plugin1/3.png" alt="3"></p>
+<p><img src="/2019/01/27/Plugin1/4.png" alt="4"></p>
+<p>（官方推荐勾选“Use default cradle wrapper”，以便IDEA自动安装Gradle需要的包）</p>
+<p><img src="/2019/01/27/Plugin1/5.png" alt="5"></p>
+<p>项目创建完成。</p>
+<p>工程结构：</p>
+<p><img src="/2019/01/27/Plugin1/16.png" alt=""></p>
+<p><img src="/2019/01/27/Plugin1/17.png" alt="6"></p>
+<p>plugin.xml文件内容：</p>
+<ul>
+<li>id：当前插件的唯一id号。</li>
+<li>name：插件的名称。</li>
+<li>version：插件的版本号。</li>
+<li>vendor：开发人的邮箱、公司名称。</li>
+<li>description：插件的描述，如果将插件上传到IDEA的仓库，在进行下载时会显示该描述。</li>
+<li>idea-version：表示当前插件所支持的所有IDEA版本。</li>
+<li>extensions：一般放一些我们自己扩展的东西，比如新增高亮显示、新增语言支持。</li>
+<li>actions：新增的类在这里注册，用于菜单栏扩展。</li>
+</ul>
+<p>##4. 配置Gradle插件</p>
+<p>在build.gradle文件中，设置运行插件的沙箱地址。</p>
+<p><img src="/2019/01/27/Plugin1/7.png" alt="7"></p>
+<p>##5. 创建一个action</p>
+<p><img src="/2019/01/27/Plugin1/8.png" alt="8"></p>
+<p><img src="/2019/01/27/Plugin1/9.png" alt="9"></p>
+<p>自定义功能加在Window菜单栏下。</p>
+<p><img src="/2019/01/27/Plugin1/10.png" alt="10"></p>
+<p><img src="/2019/01/27/Plugin1/11.png" alt="11"></p>
+<p>在plugin.xml文件中，项目自动生成action配置：</p>
+<p><img src="/2019/01/27/Plugin1/12.png" alt="12"></p>
+<h2 id="6-Gradle运行配置"><a href="#6-Gradle运行配置" class="headerlink" title="6. Gradle运行配置"></a>6. Gradle运行配置</h2><p>菜单Edit Configurations -&gt; Run/Debug Configurations</p>
+<p>点击’+’号，新建Gradle Run Configuration。</p>
+<p><img src="/2019/01/27/Plugin1/18.png" alt="13"></p>
+<p><img src="/2019/01/27/Plugin1/19.png" alt="14"></p>
+<p><img src="/2019/01/27/Plugin1/13.png" alt="15"></p>
+<h2 id="7-运行项目"><a href="#7-运行项目" class="headerlink" title="7. 运行项目"></a>7. 运行项目</h2><p><img src="/2019/01/27/Plugin1/20.png" alt="16"></p>
+<p>在Window菜单栏加入我们自定义的’Greeting’选项，点击弹出’Hello World!’。</p>
+<p><img src="/2019/01/27/Plugin1/14.png" alt="17"></p>
+<p><img src="/2019/01/27/Plugin1/15.png" alt="18"></p>
+<h2 id="8-打包插件"><a href="#8-打包插件" class="headerlink" title="8. 打包插件"></a>8. 打包插件</h2><p>参考文献：</p>
+<p>IDEA官方插件开发手册<a href="http://www.jetbrains.org/intellij/sdk/docs/basics.html" target="_blank" rel="noopener">http://www.jetbrains.org/intellij/sdk/docs/basics.html</a></p>
 
       
     </div>
@@ -182,7 +224,7 @@
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intellij-Plugin/">Intellij Plugin</a></li></ul>
 
       
         
@@ -217,19 +259,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/27/Plugin1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Intellij IDEA插件开发入门（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/18/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/24/Keras1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Keras学习（一）：Mac OS下安装基于TensorFlow的Keras</div>
     </a>
   
 </nav>
@@ -243,7 +276,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-TensorFlow安装"><span class="nav-number">1.</span> <span class="nav-text">1. TensorFlow安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Keras安装"><span class="nav-number">2.</span> <span class="nav-text">2. Keras安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实例测试"><span class="nav-number">3.</span> <span class="nav-text">3. 实例测试</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-确认Gradle可用"><span class="nav-number">1.</span> <span class="nav-text">2. 确认Gradle可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Gradle运行配置"><span class="nav-number">2.</span> <span class="nav-text">6. Gradle运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-运行项目"><span class="nav-number">3.</span> <span class="nav-text">7. 运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打包插件"><span class="nav-number">4.</span> <span class="nav-text">8. 打包插件</span></a></li></ol>
     
     </div>
   </aside>
