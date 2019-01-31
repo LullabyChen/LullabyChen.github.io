@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://lullabychen.github.io/categories/index.html">
 <meta property="og:site_name" content="Cabin">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-24T10:37:56.781Z">
+<meta property="og:updated_time" content="2019-01-31T08:27:16.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="categories">
   
@@ -53,9 +53,31 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
 
 
-<header id="allheader" class="site-header" role="banner">
+
+
+<header id="allheader" class="site-header" role="banner" style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);">
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -98,52 +120,123 @@
             
       <div id="content" class="outer">
         
-          <section id="main"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+          <section id="main"><div class="archives-wrap" style="margin: 0px;">
+	<div class="archives-category-wrap">
+		<blockquote>
+		
+		  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Notes/">Notes</a><span class="category-list-count">5</span></li></ul>
+		
+		</blockquote>
+	</div>
+	
+	<!-- 分类列表 -->
+
     
-    
-      <header class="article-header">
-        
+    <div class="archives-wrap">
+        <div class="archive-year-wrap" id="Notes">
+            <h1 class="archive-category">Notes</h1>
+        </div>
+        <div class="archives">
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2019/01/28/Keras4/" class="archive-article-date">
+		  <time datetime="2019-01-28T12:08:52.000Z" itemprop="datePublished">Jan 28, 2019</time>
+	  </a>
+      
   
     <h1 class="thumb" itemprop="name">
-      categories
+      <a class="archive-article-title" href="/2019/01/28/Keras4/">KERAS学习（四）：预测房价-回归问题</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/categories/index.html" class="article-date">
-	  <time datetime="2019-01-24T04:04:56.000Z" itemprop="datePublished">January 24, 2019</time>
-	</a>
-
-       
-      
-	<span id="busuanzi_container_page_pv">
-	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-	</span>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-      
-    </footer>
-    <hr class="entry-footer-hr">
+    </header>
   </div>
-  
-    
-  
 </article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-<!-- Table of Contents -->
-</section>
+      <a href="/2019/01/28/Keras3/" class="archive-article-date">
+		  <time datetime="2019-01-28T12:08:44.000Z" itemprop="datePublished">Jan 28, 2019</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2019/01/28/Keras3/">KERAS学习（三）：新闻分类-多分类问题</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2019/01/28/Keras2/" class="archive-article-date">
+		  <time datetime="2019-01-28T11:42:55.000Z" itemprop="datePublished">Jan 28, 2019</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2019/01/28/Keras2/">KERAS学习（二）：电影评级分类-二分类问题</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2019/01/27/Plugin1/" class="archive-article-date">
+		  <time datetime="2019-01-27T13:13:10.000Z" itemprop="datePublished">Jan 27, 2019</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2019/01/27/Plugin1/">Intellij IDEA插件开发入门（一）</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+                <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/2019/01/24/Keras1/" class="archive-article-date">
+		  <time datetime="2019-01-24T01:20:32.000Z" itemprop="datePublished">Jan 24, 2019</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2019/01/24/Keras1/">Keras学习（一）：Mac OS下安装基于TensorFlow的Keras</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+                
+            
+        </div>
+    </div>
+    
+</div></section>
           <aside id="sidebar">
   
     <div style="margin: 20px 0;">
@@ -421,6 +514,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
