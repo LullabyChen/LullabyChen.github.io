@@ -3,28 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Intellij IDEA插件开发入门（一） | Cabin</title>
+  <title>Markdown：空格 | Cabin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Intellij Plugin">
   
   
   
-  
-  <meta name="description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
-<meta name="keywords" content="Intellij Plugin">
+  <meta name="description" content="半角空格 &amp;amp;ensp; 全角空格 &amp;amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Intellij IDEA插件开发入门（一）">
-<meta property="og:url" content="https://lullabychen.github.io/2019/01/27/Plugin1/index.html">
+<meta property="og:title" content="Markdown：空格">
+<meta property="og:url" content="https://lullabychen.github.io/2019/04/05/Markdown空格/index.html">
 <meta property="og:site_name" content="Cabin">
-<meta property="og:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta property="og:description" content="半角空格 &amp;amp;ensp; 全角空格 &amp;amp;emsp;">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
-<meta property="og:updated_time" content="2019-01-28T09:28:47.278Z">
+<meta property="og:updated_time" content="2019-04-05T07:29:38.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Intellij IDEA插件开发入门（一）">
-<meta name="twitter:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
-<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
+<meta name="twitter:title" content="Markdown：空格">
+<meta name="twitter:description" content="半角空格 &amp;amp;ensp; 全角空格 &amp;amp;emsp;">
   
     <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
   
@@ -106,25 +101,15 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Plugin1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Markdown空格" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-<div class="article-gallery">
-  <div class="article-gallery-photos">
-    
-      <a class="article-gallery-img fancybox" href="/0.png" rel="gallery_cju3r5uwi00099ynd9b1mvv0c">
-        <img src="/2019/01/27/Plugin1//0.png" itemprop="image">
-      </a>
-    
-  </div>
-</div>
-
     
       <header class="article-header">
         
   
     <h1 class="thumb" itemprop="name" align="center">
-      Intellij IDEA插件开发入门（一）
+      Markdown：空格
     </h1>
   
 
@@ -132,14 +117,11 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/27/Plugin1/" class="article-date">
-	  <time datetime="2019-01-27T13:13:10.000Z" itemprop="datePublished">January 27, 2019</time>
+	<a href="/2019/04/05/Markdown空格/" class="article-date">
+	  <time datetime="2019-04-05T07:19:24.000Z" itemprop="datePublished">April 5, 2019</time>
 	</a>
 
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Notes/">Notes</a>
- 
+       
       
 	<span id="busuanzi_container_page_pv">
 	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
@@ -148,72 +130,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Intellij IDEA插件开发有两种方式：</p>
-<ul>
-<li>Gradle</li>
-<li>Plugin Devkit</li>
-</ul>
-<p>本文根据官方推荐使用Gradle。</p>
-<h2 id="1-插件开发环境"><a href="#1-插件开发环境" class="headerlink" title="1. 插件开发环境"></a>1. 插件开发环境</h2><ul>
-<li>IDEA: 社区版本</li>
-<li>Project JDK: 1.8</li>
-<li>Gradle: 4.10</li>
-</ul>
-<a id="more"></a>
-<h2 id="2-确认Gradle可用"><a href="#2-确认Gradle可用" class="headerlink" title="2. 确认Gradle可用"></a>2. 确认Gradle可用</h2><p>菜单Preferences -&gt; Plugins</p>
-<p><img src="/2019/01/27/Plugin1/1.png" alt="1"></p>
-<h2 id="3-创建Plugin项目"><a href="#3-创建Plugin项目" class="headerlink" title="3. 创建Plugin项目"></a>3. 创建Plugin项目</h2><p><img src="/2019/01/27/Plugin1/2.png" alt="2"></p>
-<p><img src="/2019/01/27/Plugin1/3.png" alt="3"></p>
-<p><img src="/2019/01/27/Plugin1/4.png" alt="4"></p>
-<p>（官方推荐勾选“Use default cradle wrapper”，以便IDEA自动安装Gradle需要的包）</p>
-<p><img src="/2019/01/27/Plugin1/5.png" alt="5"></p>
-<p>项目创建完成。</p>
-<p><strong>工程结构：</strong></p>
-<p><img src="/2019/01/27/Plugin1/16.png" alt=""></p>
-<p><img src="/2019/01/27/Plugin1/17.png" alt="6"></p>
-<p><strong>plugin.xml文件内容：</strong></p>
-<ul>
-<li>id：当前插件的唯一id号。</li>
-<li>name：插件的名称。</li>
-<li>version：插件的版本号。</li>
-<li>vendor：开发人的邮箱、公司名称。</li>
-<li>description：插件的描述，如果将插件上传到IDEA的仓库，在进行下载时会显示该描述。</li>
-<li>idea-version：表示当前插件所支持的所有IDEA版本。</li>
-<li>extensions：一般放一些我们自己扩展的东西，比如新增高亮显示、新增语言支持。</li>
-<li>actions：新增的类在这里注册，用于菜单栏扩展。</li>
-</ul>
-<h2 id="4-配置Gradle插件"><a href="#4-配置Gradle插件" class="headerlink" title="4. 配置Gradle插件"></a>4. 配置Gradle插件</h2><p>在build.gradle文件中，设置运行插件的沙箱地址。</p>
-<p><img src="/2019/01/27/Plugin1/7.png" alt="7"></p>
-<h2 id="5-创建一个action"><a href="#5-创建一个action" class="headerlink" title="5. 创建一个action"></a>5. 创建一个action</h2><p><img src="/2019/01/27/Plugin1/8.png" alt="8"></p>
-<p><img src="/2019/01/27/Plugin1/9.png" alt="9"></p>
-<p>自定义功能加在Window菜单栏下。</p>
-<p><img src="/2019/01/27/Plugin1/10.png" alt="10"></p>
-<p><img src="/2019/01/27/Plugin1/11.png" alt="11"></p>
-<p>在plugin.xml文件中，项目自动生成action配置：</p>
-<p><img src="/2019/01/27/Plugin1/12.png" alt="12"></p>
-<h2 id="6-Gradle运行配置"><a href="#6-Gradle运行配置" class="headerlink" title="6. Gradle运行配置"></a>6. Gradle运行配置</h2><p>菜单Edit Configurations -&gt; Run/Debug Configurations</p>
-<p>点击’+’号，新建Gradle Run Configuration。</p>
-<p><img src="/2019/01/27/Plugin1/18.png" alt="13"></p>
-<p><img src="/2019/01/27/Plugin1/19.png" alt="14"></p>
-<p><img src="/2019/01/27/Plugin1/13.png" alt="15"></p>
-<h2 id="7-运行项目"><a href="#7-运行项目" class="headerlink" title="7. 运行项目"></a>7. 运行项目</h2><p><img src="/2019/01/27/Plugin1/20.png" alt="16"></p>
-<p>在Window菜单栏加入我们自定义的’Greeting’选项，点击弹出’Hello World!’。</p>
-<p><img src="/2019/01/27/Plugin1/14.png" alt="17"></p>
-<p><img src="/2019/01/27/Plugin1/15.png" alt="18"></p>
-<h2 id="8-打包插件"><a href="#8-打包插件" class="headerlink" title="8. 打包插件"></a>8. 打包插件</h2><p>参考文献：</p>
-<p>IDEA官方插件开发手册<a href="http://www.jetbrains.org/intellij/sdk/docs/basics.html" target="_blank" rel="noopener">http://www.jetbrains.org/intellij/sdk/docs/basics.html</a></p>
+        <p>半角空格 &amp;ensp;</p>
+<p>全角空格 &amp;emsp;</p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Notes/">Notes</a>
-
       
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intellij-Plugin/">Intellij Plugin</a></li></ul>
-
       
         
 	<div id="comment">
@@ -247,19 +171,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/28/Keras2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          KERAS学习（二）：电影评级分类-二分类问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/24/Keras1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/28/Keras4/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Keras学习（一）：Mac OS下安装基于TensorFlow的Keras</div>
+      <div class="article-nav-title">KERAS学习（四）：预测房价-回归问题</div>
     </a>
   
 </nav>
@@ -273,7 +188,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-插件开发环境"><span class="nav-number">1.</span> <span class="nav-text">1. 插件开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-确认Gradle可用"><span class="nav-number">2.</span> <span class="nav-text">2. 确认Gradle可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建Plugin项目"><span class="nav-number">3.</span> <span class="nav-text">3. 创建Plugin项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置Gradle插件"><span class="nav-number">4.</span> <span class="nav-text">4. 配置Gradle插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建一个action"><span class="nav-number">5.</span> <span class="nav-text">5. 创建一个action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Gradle运行配置"><span class="nav-number">6.</span> <span class="nav-text">6. Gradle运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-运行项目"><span class="nav-number">7.</span> <span class="nav-text">7. 运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打包插件"><span class="nav-number">8.</span> <span class="nav-text">8. 打包插件</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>
