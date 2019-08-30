@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Intellij IDEA插件开发入门（一） | Cabin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Intellij Plugin">
+  
+  
+  
+  
+  <meta name="description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta name="keywords" content="Intellij Plugin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intellij IDEA插件开发入门（一）">
+<meta property="og:url" content="https://lullabychen.github.io/2019/01/27/Plugin1/index.html">
+<meta property="og:site_name" content="Cabin">
+<meta property="og:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
+<meta property="og:updated_time" content="2019-01-28T09:28:47.278Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intellij IDEA插件开发入门（一）">
+<meta name="twitter:description" content="Intellij IDEA插件开发有两种方式：  Gradle Plugin Devkit  本文根据官方推荐使用Gradle。 1. 插件开发环境 IDEA: 社区版本 Project JDK: 1.8 Gradle: 4.10">
+<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/27/Plugin1/0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Cabin" rel="home"> Cabin </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Plugin1" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/0.png" rel="gallery_cju3r7xhp000dapndfk6zvab7">
+        <img src="/2019/01/27/Plugin1//0.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name" align="center">
+      Intellij IDEA插件开发入门（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/27/Plugin1/" class="article-date">
+	  <time datetime="2019-01-27T13:13:10.000Z" itemprop="datePublished">January 27, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Notes/">Notes</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Intellij IDEA插件开发有两种方式：</p>
+<ul>
+<li>Gradle</li>
+<li>Plugin Devkit</li>
+</ul>
+<p>本文根据官方推荐使用Gradle。</p>
+<h2 id="1-插件开发环境"><a href="#1-插件开发环境" class="headerlink" title="1. 插件开发环境"></a>1. 插件开发环境</h2><ul>
+<li>IDEA: 社区版本</li>
+<li>Project JDK: 1.8</li>
+<li>Gradle: 4.10</li>
+</ul>
+<a id="more"></a>
+<h2 id="2-确认Gradle可用"><a href="#2-确认Gradle可用" class="headerlink" title="2. 确认Gradle可用"></a>2. 确认Gradle可用</h2><p>菜单Preferences -&gt; Plugins</p>
+<p><img src="/2019/01/27/Plugin1/1.png" alt="1"></p>
+<h2 id="3-创建Plugin项目"><a href="#3-创建Plugin项目" class="headerlink" title="3. 创建Plugin项目"></a>3. 创建Plugin项目</h2><p><img src="/2019/01/27/Plugin1/2.png" alt="2"></p>
+<p><img src="/2019/01/27/Plugin1/3.png" alt="3"></p>
+<p><img src="/2019/01/27/Plugin1/4.png" alt="4"></p>
+<p>（官方推荐勾选“Use default cradle wrapper”，以便IDEA自动安装Gradle需要的包）</p>
+<p><img src="/2019/01/27/Plugin1/5.png" alt="5"></p>
+<p>项目创建完成。</p>
+<p><strong>工程结构：</strong></p>
+<p><img src="/2019/01/27/Plugin1/16.png" alt=""></p>
+<p><img src="/2019/01/27/Plugin1/17.png" alt="6"></p>
+<p><strong>plugin.xml文件内容：</strong></p>
+<ul>
+<li>id：当前插件的唯一id号。</li>
+<li>name：插件的名称。</li>
+<li>version：插件的版本号。</li>
+<li>vendor：开发人的邮箱、公司名称。</li>
+<li>description：插件的描述，如果将插件上传到IDEA的仓库，在进行下载时会显示该描述。</li>
+<li>idea-version：表示当前插件所支持的所有IDEA版本。</li>
+<li>extensions：一般放一些我们自己扩展的东西，比如新增高亮显示、新增语言支持。</li>
+<li>actions：新增的类在这里注册，用于菜单栏扩展。</li>
+</ul>
+<h2 id="4-配置Gradle插件"><a href="#4-配置Gradle插件" class="headerlink" title="4. 配置Gradle插件"></a>4. 配置Gradle插件</h2><p>在build.gradle文件中，设置运行插件的沙箱地址。</p>
+<p><img src="/2019/01/27/Plugin1/7.png" alt="7"></p>
+<h2 id="5-创建一个action"><a href="#5-创建一个action" class="headerlink" title="5. 创建一个action"></a>5. 创建一个action</h2><p><img src="/2019/01/27/Plugin1/8.png" alt="8"></p>
+<p><img src="/2019/01/27/Plugin1/9.png" alt="9"></p>
+<p>自定义功能加在Window菜单栏下。</p>
+<p><img src="/2019/01/27/Plugin1/10.png" alt="10"></p>
+<p><img src="/2019/01/27/Plugin1/11.png" alt="11"></p>
+<p>在plugin.xml文件中，项目自动生成action配置：</p>
+<p><img src="/2019/01/27/Plugin1/12.png" alt="12"></p>
+<h2 id="6-Gradle运行配置"><a href="#6-Gradle运行配置" class="headerlink" title="6. Gradle运行配置"></a>6. Gradle运行配置</h2><p>菜单Edit Configurations -&gt; Run/Debug Configurations</p>
+<p>点击’+’号，新建Gradle Run Configuration。</p>
+<p><img src="/2019/01/27/Plugin1/18.png" alt="13"></p>
+<p><img src="/2019/01/27/Plugin1/19.png" alt="14"></p>
+<p><img src="/2019/01/27/Plugin1/13.png" alt="15"></p>
+<h2 id="7-运行项目"><a href="#7-运行项目" class="headerlink" title="7. 运行项目"></a>7. 运行项目</h2><p><img src="/2019/01/27/Plugin1/20.png" alt="16"></p>
+<p>在Window菜单栏加入我们自定义的’Greeting’选项，点击弹出’Hello World!’。</p>
+<p><img src="/2019/01/27/Plugin1/14.png" alt="17"></p>
+<p><img src="/2019/01/27/Plugin1/15.png" alt="18"></p>
+<h2 id="8-打包插件"><a href="#8-打包插件" class="headerlink" title="8. 打包插件"></a>8. 打包插件</h2><p>参考文献：</p>
+<p>IDEA官方插件开发手册<a href="http://www.jetbrains.org/intellij/sdk/docs/basics.html" target="_blank" rel="noopener">http://www.jetbrains.org/intellij/sdk/docs/basics.html</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Notes/">Notes</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intellij-Plugin/">Intellij Plugin</a></li></ul>
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/28/Keras2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          KERAS学习（二）：电影评级分类-二分类问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/24/Keras1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Keras学习（一）：Mac OS下安装基于TensorFlow的Keras</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-插件开发环境"><span class="nav-number">1.</span> <span class="nav-text">1. 插件开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-确认Gradle可用"><span class="nav-number">2.</span> <span class="nav-text">2. 确认Gradle可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创建Plugin项目"><span class="nav-number">3.</span> <span class="nav-text">3. 创建Plugin项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-配置Gradle插件"><span class="nav-number">4.</span> <span class="nav-text">4. 配置Gradle插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建一个action"><span class="nav-number">5.</span> <span class="nav-text">5. 创建一个action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Gradle运行配置"><span class="nav-number">6.</span> <span class="nav-text">6. Gradle运行配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-运行项目"><span class="nav-number">7.</span> <span class="nav-text">7. 运行项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-打包插件"><span class="nav-number">8.</span> <span class="nav-text">8. 打包插件</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 Cabin All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

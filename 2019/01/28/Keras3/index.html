@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>KERAS学习（三）：新闻分类-多分类问题 | Cabin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Keras">
+  
+  
+  
+  
+  <meta name="description" content="1234#单标签 多分类#加载路透社数据集from keras.datasets import reuters(train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000) 1Using TensorFlow backend. 12Downloading data from http">
+<meta name="keywords" content="Keras">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KERAS学习（三）：新闻分类-多分类问题">
+<meta property="og:url" content="https://lullabychen.github.io/2019/01/28/Keras3/index.html">
+<meta property="og:site_name" content="Cabin">
+<meta property="og:description" content="1234#单标签 多分类#加载路透社数据集from keras.datasets import reuters(train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000) 1Using TensorFlow backend. 12Downloading data from http">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://lullabychen.github.io/2019/01/28/Keras3/output_12_0.png">
+<meta property="og:updated_time" content="2019-01-28T12:16:57.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KERAS学习（三）：新闻分类-多分类问题">
+<meta name="twitter:description" content="1234#单标签 多分类#加载路透社数据集from keras.datasets import reuters(train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=10000) 1Using TensorFlow backend. 12Downloading data from http">
+<meta name="twitter:image" content="https://lullabychen.github.io/2019/01/28/Keras3/output_12_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Cabin" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/fashion.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Cabin" rel="home"> Cabin </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Keras3" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="/output_12_0.png" rel="gallery_cju3r7xhl0009apndx9qo4zs1">
+        <img src="/2019/01/28/Keras3//output_12_0.png" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name" align="center">
+      KERAS学习（三）：新闻分类-多分类问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/01/28/Keras3/" class="article-date">
+	  <time datetime="2019-01-28T12:08:44.000Z" itemprop="datePublished">January 28, 2019</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Notes/">Notes</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单标签 多分类</span></span><br><span class="line"><span class="comment">#加载路透社数据集</span></span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> reuters</span><br><span class="line">(train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=<span class="number">10000</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Using TensorFlow backend.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Downloading data from https://s3.amazonaws.com/text-datasets/reuters.npz</span><br><span class="line">2113536/2110848 [==============================] - 7s 3us/step</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(train_data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8982</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(test_data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2246</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_data[<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[1,</span><br><span class="line"> 245,</span><br><span class="line"> 273,</span><br><span class="line"> 207,</span><br><span class="line"> 156,</span><br><span class="line"> 53,</span><br><span class="line"> 74,</span><br><span class="line"> 160,</span><br><span class="line"> 26,</span><br><span class="line"> 14,</span><br><span class="line"> 46,</span><br><span class="line"> 296,</span><br><span class="line"> 26,</span><br><span class="line"> 39,</span><br><span class="line"> 74,</span><br><span class="line"> 2979,</span><br><span class="line"> 3554,</span><br><span class="line"> 14,</span><br><span class="line"> 46,</span><br><span class="line"> 4689,</span><br><span class="line"> 4329,</span><br><span class="line"> 86,</span><br><span class="line"> 61,</span><br><span class="line"> 3499,</span><br><span class="line"> 4795,</span><br><span class="line"> 14,</span><br><span class="line"> 61,</span><br><span class="line"> 451,</span><br><span class="line"> 4329,</span><br><span class="line"> 17,</span><br><span class="line"> 12]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将索引解码为新闻文本</span></span><br><span class="line">word_index = reuters.get_word_index()</span><br><span class="line">reverse_word_index = dict([(value, key) <span class="keyword">for</span> (key, value) <span class="keyword">in</span> word_index.items()])</span><br><span class="line">decoded_newswire = <span class="string">' '</span>.join([reverse_word_index.get(i - <span class="number">3</span>, <span class="string">'?'</span>) <span class="keyword">for</span> i <span class="keyword">in</span> train_data[<span class="number">0</span>]])</span><br><span class="line"><span class="comment">#第一个新闻</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Downloading data from https://s3.amazonaws.com/text-datasets/reuters_word_index.json</span><br><span class="line">557056/550378 [==============================] - 7s 13us/step</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_labels[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#数据向量化</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vectorize_sequences</span><span class="params">(sequences, dimension=<span class="number">10000</span>)</span>:</span></span><br><span class="line">    results = np.zeros((len(sequences), dimension))</span><br><span class="line">    <span class="keyword">for</span> i, sequence <span class="keyword">in</span> enumerate(sequences):</span><br><span class="line">        results[i, sequence] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line">x_train = vectorize_sequences(train_data)</span><br><span class="line">x_test = vectorize_sequences(test_data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#标签向量化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_one_hot</span><span class="params">(labels, dimension=<span class="number">46</span>)</span>:</span></span><br><span class="line">    results = np.zeros((len(labels), dimension))</span><br><span class="line">    <span class="keyword">for</span> i, label <span class="keyword">in</span> enumerate(labels):</span><br><span class="line">        results[i, label] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line">one_hot_train_labels = to_one_hot(train_labels)</span><br><span class="line">one_hot_test_labels = to_one_hot(test_labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#构建网络 模型定义</span></span><br><span class="line"><span class="comment">#激活函数 输出在46个不同输出类别上的概率分布</span></span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> layers</span><br><span class="line"></span><br><span class="line">model = models.Sequential()</span><br><span class="line">model.add(layers.Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>, input_shape=(<span class="number">10000</span>,)))</span><br><span class="line">model.add(layers.Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(layers.Dense(<span class="number">46</span>, activation=<span class="string">'softmax'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#编译模型</span></span><br><span class="line"><span class="comment">#分类交叉熵 衡量两个概率分布之间的距离</span></span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#留出验证集</span></span><br><span class="line">x_val = x_train[:<span class="number">1000</span>]</span><br><span class="line">partial_x_train = x_train[<span class="number">1000</span>:]</span><br><span class="line"></span><br><span class="line">y_val = one_hot_train_labels[:<span class="number">1000</span>]</span><br><span class="line">partial_y_train = one_hot_train_labels[<span class="number">1000</span>:]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#训练模型</span></span><br><span class="line">history = model.fit(partial_x_train, partial_y_train, epochs=<span class="number">20</span>, batch_size=<span class="number">512</span>, validation_data=(x_val, y_val))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Train on 7982 samples, validate on 1000 samples</span><br><span class="line">Epoch 1/20</span><br><span class="line">7982/7982 [==============================] - 4s 452us/step - loss: 2.4979 - acc: 0.4915 - val_loss: 1.6824 - val_acc: 0.6470</span><br><span class="line">Epoch 2/20</span><br><span class="line">7982/7982 [==============================] - 2s 264us/step - loss: 1.3942 - acc: 0.7045 - val_loss: 1.2821 - val_acc: 0.7160</span><br><span class="line">Epoch 3/20</span><br><span class="line">7982/7982 [==============================] - 2s 212us/step - loss: 1.0509 - acc: 0.7686 - val_loss: 1.1187 - val_acc: 0.7640</span><br><span class="line">Epoch 4/20</span><br><span class="line">7982/7982 [==============================] - 1s 175us/step - loss: 0.8256 - acc: 0.8281 - val_loss: 1.0233 - val_acc: 0.7740</span><br><span class="line">Epoch 5/20</span><br><span class="line">7982/7982 [==============================] - 1s 175us/step - loss: 0.6607 - acc: 0.8639 - val_loss: 0.9730 - val_acc: 0.7940</span><br><span class="line">Epoch 6/20</span><br><span class="line">7982/7982 [==============================] - 1s 188us/step - loss: 0.5260 - acc: 0.8928 - val_loss: 0.9196 - val_acc: 0.8100</span><br><span class="line">Epoch 7/20</span><br><span class="line">7982/7982 [==============================] - 1s 183us/step - loss: 0.4292 - acc: 0.9116 - val_loss: 0.9124 - val_acc: 0.8030</span><br><span class="line">Epoch 8/20</span><br><span class="line">7982/7982 [==============================] - 2s 201us/step - loss: 0.3498 - acc: 0.9270 - val_loss: 0.8942 - val_acc: 0.8170</span><br><span class="line">Epoch 9/20</span><br><span class="line">7982/7982 [==============================] - 2s 194us/step - loss: 0.2894 - acc: 0.9385 - val_loss: 0.9147 - val_acc: 0.8060</span><br><span class="line">Epoch 10/20</span><br><span class="line">7982/7982 [==============================] - 1s 181us/step - loss: 0.2451 - acc: 0.9453 - val_loss: 0.9124 - val_acc: 0.8130</span><br><span class="line">Epoch 11/20</span><br><span class="line">7982/7982 [==============================] - 1s 175us/step - loss: 0.2102 - acc: 0.9484 - val_loss: 0.9480 - val_acc: 0.8120</span><br><span class="line">Epoch 12/20</span><br><span class="line">7982/7982 [==============================] - 1s 173us/step - loss: 0.1881 - acc: 0.9523 - val_loss: 0.9600 - val_acc: 0.8050</span><br><span class="line">Epoch 13/20</span><br><span class="line">7982/7982 [==============================] - 2s 189us/step - loss: 0.1662 - acc: 0.9526 - val_loss: 0.9964 - val_acc: 0.7960</span><br><span class="line">Epoch 14/20</span><br><span class="line">7982/7982 [==============================] - 2s 229us/step - loss: 0.1530 - acc: 0.9550 - val_loss: 0.9766 - val_acc: 0.8050</span><br><span class="line">Epoch 15/20</span><br><span class="line">7982/7982 [==============================] - 2s 194us/step - loss: 0.1457 - acc: 0.9548 - val_loss: 1.0243 - val_acc: 0.7970</span><br><span class="line">Epoch 16/20</span><br><span class="line">7982/7982 [==============================] - 1s 176us/step - loss: 0.1332 - acc: 0.9553 - val_loss: 1.0392 - val_acc: 0.8020</span><br><span class="line">Epoch 17/20</span><br><span class="line">7982/7982 [==============================] - 1s 171us/step - loss: 0.1260 - acc: 0.9553 - val_loss: 1.0396 - val_acc: 0.7980</span><br><span class="line">Epoch 18/20</span><br><span class="line">7982/7982 [==============================] - 1s 183us/step - loss: 0.1169 - acc: 0.9560 - val_loss: 1.0390 - val_acc: 0.8150</span><br><span class="line">Epoch 19/20</span><br><span class="line">7982/7982 [==============================] - 1s 182us/step - loss: 0.1165 - acc: 0.9569 - val_loss: 1.0301 - val_acc: 0.8090</span><br><span class="line">Epoch 20/20</span><br><span class="line">7982/7982 [==============================] - 1s 177us/step - loss: 0.1140 - acc: 0.9580 - val_loss: 1.0484 - val_acc: 0.8030</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制训练损失和验证损失</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">loss = history.history[<span class="string">'loss'</span>]</span><br><span class="line">val_loss = history.history[<span class="string">'val_loss'</span>]</span><br><span class="line"></span><br><span class="line">epochs = range(<span class="number">1</span>, len(loss) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(epochs, loss, <span class="string">'bo'</span>, label=<span class="string">'Training loss'</span>)</span><br><span class="line">plt.plot(epochs, val_loss, <span class="string">'b'</span>, label=<span class="string">'Validation loss'</span>)</span><br><span class="line">plt.title(<span class="string">'Training and validation loss'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Epochs'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Loss'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/28/Keras3/output_12_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">plt.clf()</span><br><span class="line"></span><br><span class="line">acc = history.history[<span class="string">'acc'</span>]</span><br><span class="line">val_acc = history.history[<span class="string">'val_acc'</span>]</span><br><span class="line"></span><br><span class="line">plt.plot(epochs, acc, <span class="string">'bo'</span>, label=<span class="string">'Training acc'</span>)</span><br><span class="line">plt.plot(epochs, val_acc, <span class="string">'b'</span>, label=<span class="string">'Validation acc'</span>)</span><br><span class="line">plt.title(<span class="string">'Training and validation accuracy'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'Epochs'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Accuracy'</span>)</span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/28/Keras3/output_13_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">model = models.Sequential()</span><br><span class="line">model.add(layers.Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>, input_shape=(<span class="number">10000</span>,)))</span><br><span class="line">model.add(layers.Dense(<span class="number">64</span>, activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(layers.Dense(<span class="number">46</span>, activation=<span class="string">'softmax'</span>))</span><br><span class="line"></span><br><span class="line">model.compile(optimizer=<span class="string">'rmsprop'</span>, loss=<span class="string">'categorical_crossentropy'</span>, metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">history = model.fit(partial_x_train, partial_y_train, epochs=<span class="number">9</span>, batch_size=<span class="number">512</span>, validation_data=(x_val, y_val))</span><br><span class="line">results = model.evaluate(x_test, one_hot_test_labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Train on 7982 samples, validate on 1000 samples</span><br><span class="line">Epoch 1/9</span><br><span class="line">7982/7982 [==============================] - 4s 494us/step - loss: 2.5416 - acc: 0.5223 - val_loss: 1.6816 - val_acc: 0.6490</span><br><span class="line">Epoch 2/9</span><br><span class="line">7982/7982 [==============================] - 2s 271us/step - loss: 1.3779 - acc: 0.7096 - val_loss: 1.2817 - val_acc: 0.7240</span><br><span class="line">Epoch 3/9</span><br><span class="line">7982/7982 [==============================] - 2s 225us/step - loss: 1.0201 - acc: 0.7783 - val_loss: 1.1325 - val_acc: 0.7500</span><br><span class="line">Epoch 4/9</span><br><span class="line">7982/7982 [==============================] - 1s 182us/step - loss: 0.8026 - acc: 0.8237 - val_loss: 1.0541 - val_acc: 0.7580</span><br><span class="line">Epoch 5/9</span><br><span class="line">7982/7982 [==============================] - 1s 180us/step - loss: 0.6429 - acc: 0.8617 - val_loss: 0.9743 - val_acc: 0.8000</span><br><span class="line">Epoch 6/9</span><br><span class="line">7982/7982 [==============================] - 2s 191us/step - loss: 0.5152 - acc: 0.8933 - val_loss: 0.9122 - val_acc: 0.8130</span><br><span class="line">Epoch 7/9</span><br><span class="line">7982/7982 [==============================] - 1s 174us/step - loss: 0.4152 - acc: 0.9138 - val_loss: 0.8975 - val_acc: 0.8240</span><br><span class="line">Epoch 8/9</span><br><span class="line">7982/7982 [==============================] - 1s 170us/step - loss: 0.3377 - acc: 0.9276 - val_loss: 0.8781 - val_acc: 0.8240</span><br><span class="line">Epoch 9/9</span><br><span class="line">7982/7982 [==============================] - 2s 193us/step - loss: 0.2803 - acc: 0.9369 - val_loss: 0.9426 - val_acc: 0.8020</span><br><span class="line">2246/2246 [==============================] - 1s 354us/step</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1.0234324284567964, 0.7782724844698171]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在新数据上生成预测结果</span></span><br><span class="line">predictions = model.predict(x_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions[<span class="number">0</span>].shape</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(46,)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(predictions[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.99999994</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.argmax(predictions[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">array([9.00706073e-06, 1.12914335e-04, 3.39240214e-05, 9.69965935e-01,</span><br><span class="line">       1.83314960e-02, 1.24670180e-07, 7.63048884e-05, 3.95889074e-05,</span><br><span class="line">       3.83749488e-03, 2.36399887e-06, 3.72867580e-05, 9.80967656e-04,</span><br><span class="line">       5.15155261e-05, 2.07923913e-05, 5.04263471e-06, 1.48046838e-05,</span><br><span class="line">       1.14349602e-03, 1.92527470e-04, 3.11047770e-04, 1.02656987e-03,</span><br><span class="line">       1.14359299e-03, 5.38451481e-04, 4.49636536e-06, 7.14166526e-05,</span><br><span class="line">       9.90290209e-06, 2.55455700e-04, 2.65549829e-06, 2.30972691e-05,</span><br><span class="line">       5.41368354e-06, 1.46480859e-04, 2.82360037e-04, 1.54729976e-04,</span><br><span class="line">       1.18201979e-05, 5.56262385e-05, 4.05374340e-05, 1.80534789e-05,</span><br><span class="line">       1.31222856e-04, 5.19382884e-05, 1.25783903e-04, 2.72022764e-04,</span><br><span class="line">       3.01298915e-05, 3.90922709e-04, 1.79568303e-06, 2.20499132e-05,</span><br><span class="line">       6.57706141e-06, 1.01889082e-05], dtype=float32)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predictions[<span class="number">0</span>][<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.96996593</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Notes/">Notes</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li></ul>
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/28/Keras4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          KERAS学习（四）：预测房价-回归问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/28/Keras2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">KERAS学习（二）：电影评级分类-二分类问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav">None</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 Cabin All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
