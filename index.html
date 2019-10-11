@@ -127,112 +127,25 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于idea打包Spring boot为可执行jar包，并部署到服务器分为以下步骤：</p>
-<ol>
-<li>idea打包jar包</li>
-<li>tmux开会话</li>
-<li>连接远程服务器</li>
-<li>上传文件</li>
-<li>成功运行</li>
-</ol>
-<h2 id="1-idea打包jar包"><a href="#1-idea打包jar包" class="headerlink" title="1. idea打包jar包"></a>1. idea打包jar包</h2><p>我尝试了两种方式：分别是用idea自带的打包形式，和maven管理工具打包。</p>
-<p>####1.1. 用idea自带的打包形式</p>
-<p><strong>可能存在的问题</strong>：</p>
-<ul>
-<li><p>JAR包运行错误：“Error ：Invalid or corrupt jarfile xxx.jar”。<strong>（已解决Q1）</strong></p>
-</li>
-<li><p>有些项目依赖没有打进jar包，在项目目录下可以运行，但单独jar包不能运行。<strong>（未解决Q2）</strong></p>
-</li>
-</ul>
-<p>主菜单栏File -&gt; Project Structure -&gt; Artifacts -&gt; +(Add) -&gt; JAR -&gt; From modules with dependencies… -&gt; 选择Main Class -&gt; 选择copy to the output… -&gt; 选择META-INF生成目录(注意放在项目目录下，不要放在默认目录，解决Q1) -&gt; OK -&gt; (尝试了创建libs目录，放第三方jar包，依然没有解决Q2) -&gt; OK -&gt; 主菜单栏Build -&gt; Build Artifacts… -&gt; build生成jar包。</p>
-<p><img src="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/1.png" alt="1"></p>
-<p>最终结果：在该目录下java -jar xxx.jar可以运行，单独放在服务器报错。</p>
-<p><img src="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/2.png" alt="2"></p>
-<p>####1.2. 用自带的maven管理工具打包</p>
-<p>于是尝试第二种方法。作为一个spring boot项目，用idea自带的maven管理工具进行打包。步骤如下图所示，依次点击clean、compile、package和install。</p>
-<p><img src="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/3.png" alt="3"></p>
-<p>获得如下图文件夹。此刻的jar包可以独立运行，没有依赖缺失的问题。</p>
-<p><img src="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/4.png" alt="4"></p>
-<h2 id="2-tmux开会话"><a href="#2-tmux开会话" class="headerlink" title="2. tmux开会话"></a>2. tmux开会话</h2><p>命令介绍：Tmux (Terminal Multiplexer)是一款终端复用软件，使用它的好处一是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机，二是当终端关闭后该shell里面运行的任务进程也会随之中断，通过使用tmux就能很容易的解决这个问题。</p>
-<p>用tmux开一个会话，防止断开服务器连接后应用停止运行。如下为步骤及常见操作，均在命令行操作：</p>
-<ul>
-<li>在mac中安装tmux</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bre install tmux</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改快捷键前缀（此处没用）</li>
-</ul>
-<p>当想要使用tmux快捷键时，需要先按下快捷键前缀，然后再按下快捷键。由于键盘上Ctrl-b太远，所以修改为Ctrl-a。</p>
-<p>将以下配置加入到tmux的配置文件~/.tmux.conf中（没有就创建一个）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unbind C-b</span><br><span class="line">set -g prefix C-a</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建新的会话</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s &lt;name-of-my-session&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>获取会话列表</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux ls</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在会话外进入会话</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t &lt;name-of-my-session&gt;</span><br><span class="line">#or</span><br><span class="line">tmux a -t &lt;name-of-my-session&gt;</span><br></pre></td></tr></table></figure>
-<p>可能会产生报错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessions should be nested with care, unset $TMUX to force</span><br></pre></td></tr></table></figure>
-<p>解决办法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset TMUX</span><br></pre></td></tr></table></figure>
-<p>然后再执行tmux attach。</p>
-<ul>
-<li>回到之前的会话</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach</span><br></pre></td></tr></table></figure>
-<ul>
-<li>临时退出但不删除会话</li>
-</ul>
-<p>Ctrl+a，然后d（注意先后顺序，并非同时按下）</p>
-<ul>
-<li>退出并删除会话</li>
-</ul>
-<p>Ctrl+a，然后x</p>
-<h2 id="3-连接远程服务器"><a href="#3-连接远程服务器" class="headerlink" title="3. 连接远程服务器"></a>3. 连接远程服务器</h2><p>前提：有需要连接的服务器的ip、账户、密码。</p>
-<ul>
-<li>打开终端，进入根目录</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su -</span><br></pre></td></tr></table></figure>
-<ul>
-<li>连接服务器（输入用户名和地址）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh server-username@remote-ip</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>如果第一次连接需要输入yes或者no确认是否连接，输入yes回车。</p>
-</li>
-<li><p>输入密码</p>
-</li>
-<li><p>连接成功</p>
-</li>
-<li><p>进行操作</p>
-</li>
-</ul>
-<p>假如要部署，首先应该查看端口占用情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查看服务器所有端口</span><br><span class="line">netstat -ntlp</span><br><span class="line">#查看服务器指定端口是否被占用</span><br><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
-<ul>
-<li>退出服务器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
-<h2 id="4-上传文件"><a href="#4-上传文件" class="headerlink" title="4. 上传文件"></a>4. 上传文件</h2><p>我采用的SCP方式传输文件。</p>
-<ul>
-<li>上传文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp local-file-url server-username@remote-ip:remote-file-url</span><br><span class="line">#上传文件夹加-r参数</span><br></pre></td></tr></table></figure>
-<ul>
-<li>下载文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r server-username@remote-ip:remote-file-url local-file-url</span><br></pre></td></tr></table></figure>
-<p>另外mac平台下可以使用sz和rz命令进行远程服务器文件的上传下载，似乎需要本机和服务器都安装lrzsz。</p>
-<h2 id="5-成功运行"><a href="#5-成功运行" class="headerlink" title="5. 成功运行"></a>5. 成功运行</h2><p>配置合适的端口，jar包上传到服务器之后，就可以执行啦。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxxxx.jar</span><br></pre></td></tr></table></figure>
-<p>成功执行之后，Ctrl+a|d临时退出会话，就可以一直挂着任务进程了。</p>
+        
+          <div class="entry-thumbnail">
+            <img src="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/3.png" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt="">
+          </div>
+          <div class="entry-summary">
+          关于idea打包Spring boot为可执行jar包，并部署到服务器分为以下步骤：
 
+idea打包jar包
+tmux开会话
+连接远程服务器
+上传文件
+成功运行
+
+
+        
+          <p class="article-more-link">
+            <a href="/2019/10/09/Java-IDEA打jar包-部署到服务器过程全记录/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
